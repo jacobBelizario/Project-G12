@@ -9,21 +9,24 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Whats your name?"
-
-        android:textSize="40sp"
         android:layout_marginTop="220dp"
-        android:textAlignment="center"/>
+        android:text="Whats your name?"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textColor="@color/primaryFontColor"/>
+
     <EditText
+        android:id="@+id/new_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textSize="30sp"
         android:hint="ENTER YOUR NAME"/>
     <Button
+        android:id="@+id/new_user_continue_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SUBMIT"
+        android:text="CONTINUE"
         android:textSize="20sp"
         android:layout_gravity="center"/>
 
