@@ -8,26 +8,27 @@
     tools:context=".MainActivity">
 
 
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:src="@drawable/logo"
             android:layout_marginTop="150dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="LEARN TO CODE"
-            android:textAlignment="center"
-            android:textSize="40sp"
-
             />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:text="G12 Academy"
+        android:text="Learn To Code"
         android:textAlignment="center"
-        android:textSize="50sp" />
+        android:textSize="30sp"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:indeterminateTint="@color/mid_gold"/>
 
 
 </LinearLayout>

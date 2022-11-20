@@ -1,45 +1,49 @@
 package com.example.project_g12
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.project_g12.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.project_g12.databinding.ActivityOldUserBinding
 
 class OldUserActivity : AppCompatActivity() {
+    lateinit var binding:ActivityOldUserBinding
+    var data = DataSource.getInstance()
+    var lessonRemaining = 0
+    var lessonCompleted = 0
 
-    lateinit var datasource:Datasource
-    lateinit var binding: ActivityOldUserBinding
+    fun checkLessonsRemaining() {
+        for(lesson in data.lessonList) {
+            if(lesson.isComplete) {
+                this.lessonCompleted++
+            }else {
+                this.lessonRemaining++
+            }
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.binding = ActivityOldUserBinding.inflate(layoutInflater)
+        binding = ActivityOldUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-    }
+        checkLessonsRemaining()
+        binding.tvUserNameMain.text = data.user.userName
+        binding.tvUserNameHeader.text = data.user.userName
+        binding.tvLessonCompleted.append(" ${this.lessonCompleted.toString()}")
+        binding.tvLessonRemaining.append(" ${this.lessonRemaining.toString()}")
+        var percentage:Double = ((this.lessonCompleted).toDouble()/(data.user.lessonList.size).toDouble())*100.0
+        binding.tvCoursePercentage.text = "You have completed ${percentage.toInt()}% of the course"
 
-    override fun onStart() {
-        super.onStart()
-
-        datasource = Datasource.getInstance()
-
-        // TODO: update using user data
-        binding.oldUserTitle.setText("Welcome back, " + datasource.currentUser)
-        binding.oldUserProgression.setText("You've completed " + "25" + "% of the course!")
-        binding.oldUserCompleted.setText("Lessons completed: " + "1")
-        binding.oldUserRemaining.setText("Lessons remaining: " + "4")
-
-        binding.oldUserContinueButton.setOnClickListener {
-            // TODO: intent to lesson list
-            // startActivity(Intent(this, ))
+        //button actions
+        binding.btnContinue.setOnClickListener {
+            var intent = Intent(this,MainMenuActivity::class.java)
+            startActivity(intent)
         }
-
-        binding.oldUserResetButton.setOnClickListener{
-            // TODO: reset user data
-            datasource.currentUser = null
-            startActivity(Intent(this, SplashScreen::class.java))
+        binding.btnClearData.setOnClickListener {
+            data.reset()
+            startActivity(Intent(this, MainActivity::class.java))
         }
-
 
     }
 }

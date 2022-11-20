@@ -4,65 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OldUserActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    tools:context=".OldUserActivity">
 
-    <TextView
-        android:id="@+id/old_user_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:textSize="35sp"
-        android:textColor="@color/primaryFontColor"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/mid_gold">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/logo_background"
+            />
+
+        <TextView
+            android:id="@+id/tv_user_name_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
     <TextView
-        android:id="@+id/old_user_progression"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="25sp"
-        android:gravity="left"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/primaryFontColor"/>
-
+        android:text="WELCOME BACK"
+        android:textSize="40sp"
+        android:layout_marginTop="70dp"
+        android:textAlignment="center"/>
     <TextView
-        android:id="@+id/old_user_completed"
+        android:id="@+id/tv_user_name_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:text="USER_PLACEHOLDER"
         android:textSize="30sp"
-        android:gravity="left"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/primaryFontColor"/>
-
+        android:textColor="@color/mid_gold"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"/>
     <TextView
-        android:id="@+id/old_user_remaining"
+        android:id="@+id/tv_course_percentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:gravity="left"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/primaryFontColor"/>
+        android:text="You have completed 25% of the course"
+        android:textSize="15sp"
+        android:layout_margin="20dp"/>
+    <TextView
+        android:id="@+id/tv_lesson_completed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lessons Completed:"
+        android:textSize="15sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        />
+    <TextView
+        android:id="@+id/tv_lesson_remaining"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lessons Remaining:"
+        android:textSize="15sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
 
     <Button
-        android:id="@+id/old_user_continue_button"
+        android:id="@+id/btn_continue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:text="CONTINUE"/>
-
+        android:text="CONTINUE"
+        android:layout_marginTop="50dp"
+        android:textSize="20sp"
+        android:layout_gravity="center"/>
     <Button
-        android:id="@+id/old_user_reset_button"
+        android:id="@+id/btn_clear_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:layout_marginTop="100dp"
-        android:textColor="@color/purple_200"
-        android:text="Delete all data and reset"/>
+        android:text="Delete all data and reset"
+        android:layout_marginTop="200dp"
+        android:textSize="15sp"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
