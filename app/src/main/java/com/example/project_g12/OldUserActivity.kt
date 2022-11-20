@@ -1,19 +1,38 @@
 package com.example.project_g12
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Data
+import androidx.appcompat.app.AppCompatActivity
 import com.example.project_g12.databinding.ActivityOldUserBinding
 
 class OldUserActivity : AppCompatActivity() {
     lateinit var binding:ActivityOldUserBinding
+    var data = DataSource.getInstance().testUser
+    var lessonRemaining = 0
+    var lessonCompleted = 0
+
+    fun checkLessonsRemaining() {
+        for(lesson in data.lessonList) {
+            if(lesson.isComplete) {
+                this.lessonCompleted++
+            }else {
+                this.lessonRemaining++
+            }
+        }
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOldUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var data = DataSource.getInstance().userName
         //set placeholders to username
-        binding.tvUserNameMain.text = data
-        binding.tvUserNameHeader.text = data
+        checkLessonsRemaining()
+        binding.tvUserNameMain.text = data.userName
+        binding.tvUserNameHeader.text = data.userName
+        binding.tvLessonCompleted.append(" ${this.lessonCompleted.toString()}")
+        binding.tvLessonRemaining.append(" ${this.lessonRemaining.toString()}")
+
+        var percentage:Double = ((this.lessonCompleted).toDouble()/(data.lessonList.size).toDouble())*100.0
+        binding.tvCoursePercentage.text = "You have completed ${percentage.toInt()}% of the course"
     }
 }

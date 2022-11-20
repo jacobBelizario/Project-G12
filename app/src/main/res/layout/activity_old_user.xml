@@ -48,7 +48,7 @@
         android:layout_marginTop="20dp"
         android:textAlignment="center"/>
     <TextView
-        android:id="@+id/tv_course_details"
+        android:id="@+id/tv_course_percentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="You have completed 25% of the course"

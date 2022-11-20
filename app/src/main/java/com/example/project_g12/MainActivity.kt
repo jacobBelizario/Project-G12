@@ -1,11 +1,10 @@
 package com.example.project_g12
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.project_g12.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,8 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             val dataSource = DataSource.getInstance()
-
-            if(dataSource.userName == "") {
+            if(dataSource.testUser.userName.isNullOrEmpty()) {
                 val intent = Intent(this, NewUserActivity::class.java)
                 startActivity(intent)
             }else {
