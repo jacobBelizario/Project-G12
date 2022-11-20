@@ -1,5 +1,6 @@
 package com.example.project_g12
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.project_g12.databinding.ActivityOldUserBinding
@@ -26,13 +27,20 @@ class OldUserActivity : AppCompatActivity() {
         binding = ActivityOldUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //set placeholders to username
+        data.lessonList[0].isComplete = true
+        data.lessonList[1].isComplete = true
         checkLessonsRemaining()
         binding.tvUserNameMain.text = data.userName
         binding.tvUserNameHeader.text = data.userName
         binding.tvLessonCompleted.append(" ${this.lessonCompleted.toString()}")
         binding.tvLessonRemaining.append(" ${this.lessonRemaining.toString()}")
-
         var percentage:Double = ((this.lessonCompleted).toDouble()/(data.lessonList.size).toDouble())*100.0
         binding.tvCoursePercentage.text = "You have completed ${percentage.toInt()}% of the course"
+
+        //button actions
+        binding.btnContinue.setOnClickListener {
+            var intent = Intent(this,MainMenuActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
