@@ -1,7 +1,7 @@
 package com.example.project_g12
 
 class DataSource {
-    var userName:String=""
+    var userName:String="TEST"
     var courseList:MutableList<String> = mutableListOf<String>()
     private constructor() {}
 
