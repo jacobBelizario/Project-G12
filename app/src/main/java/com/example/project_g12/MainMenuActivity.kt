@@ -23,18 +23,21 @@ class MainMenuActivity : AppCompatActivity() {
                 lessonListAdapter = LessonListAdapter(this, seqLesson)
                 lessonListAdapter.notifyDataSetChanged()
                 binding.llLessons.adapter = lessonListAdapter
-            } else if (data.lessonList[0].isComplete) {
+            }
+            if (data.lessonList[0].isComplete) {
                 var seqLesson = arrayListOf(data.lessonList[0], data.lessonList[1])
                 lessonListAdapter = LessonListAdapter(this, seqLesson)
                 lessonListAdapter.notifyDataSetChanged()
                 binding.llLessons.adapter = lessonListAdapter
-            } else if (data.lessonList[1].isComplete) {
+            }
+            if (data.lessonList[1].isComplete) {
                 var seqLesson =
                     arrayListOf(data.lessonList[0], data.lessonList[1], data.lessonList[2])
                 lessonListAdapter = LessonListAdapter(this, seqLesson)
                 lessonListAdapter.notifyDataSetChanged()
                 binding.llLessons.adapter = lessonListAdapter
-            } else if (data.lessonList[2].isComplete) {
+            }
+            if (data.lessonList[2].isComplete) {
                 var seqLesson = arrayListOf(
                     data.lessonList[0],
                     data.lessonList[1],
@@ -70,18 +73,21 @@ class MainMenuActivity : AppCompatActivity() {
                     lessonListAdapter = LessonListAdapter(this, seqLesson)
                     lessonListAdapter.notifyDataSetChanged()
                     binding.llLessons.adapter = lessonListAdapter
-                } else if (data.lessonList[0].isComplete) {
+                }
+                if (data.lessonList[0].isComplete) {
                     var seqLesson = arrayListOf(data.lessonList[0], data.lessonList[1])
                     lessonListAdapter = LessonListAdapter(this, seqLesson)
                     lessonListAdapter.notifyDataSetChanged()
                     binding.llLessons.adapter = lessonListAdapter
-                } else if (data.lessonList[1].isComplete) {
+                }
+                if (data.lessonList[1].isComplete) {
                     var seqLesson =
                         arrayListOf(data.lessonList[0], data.lessonList[1], data.lessonList[2])
                     lessonListAdapter = LessonListAdapter(this, seqLesson)
                     lessonListAdapter.notifyDataSetChanged()
                     binding.llLessons.adapter = lessonListAdapter
-                } else if (data.lessonList[2].isComplete) {
+                }
+                if (data.lessonList[2].isComplete) {
                     var seqLesson = arrayListOf(
                         data.lessonList[0],
                         data.lessonList[1],
