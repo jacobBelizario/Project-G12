@@ -17,12 +17,14 @@ class LessonListAdapter(context: Context, var dataSource: ArrayList<Lesson>):
         var lessonListBinding = ItemLessonListBinding.inflate(
             LayoutInflater.from(context),
             parent,false)
-        var lessonDetails = """${currentLesson.name} 
+        var lessonDetails =
+            """${currentLesson.name} 
             |
             |Duration: ${currentLesson.fromMinutesToHHmm()}""".trimMargin()
         var lessonItemView = lessonListBinding.root
 
         if(currentLesson != null) {
+            lessonListBinding.tvCourseNumber.text = "${currentLesson.position}"
             lessonListBinding.tvCourseDetails.text = lessonDetails
             if(currentLesson.isComplete){
                 lessonListBinding.imgCompleted.setImageResource(R.drawable.ic_complete)

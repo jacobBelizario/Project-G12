@@ -10,24 +10,28 @@ import com.example.project_g12.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private val splashTimeOut:Long = 3000 // 1 sec
     lateinit var binding: ActivityMainBinding
+    lateinit var dataSource: DataSource
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    override fun onStart() {
+        super.onStart()
+
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val dataSource = DataSource.getInstance()
-            if(dataSource.testUser.userName.isNullOrEmpty()) {
+            dataSource = DataSource.getInstance()
+            if(!dataSource.oldUser()) {
                 val intent = Intent(this, NewUserActivity::class.java)
                 startActivity(intent)
-            }else {
+            }else{
                 val intent = Intent(this, OldUserActivity::class.java)
                 startActivity(intent)
             }
 
         }, splashTimeOut)
-
-
     }
 }

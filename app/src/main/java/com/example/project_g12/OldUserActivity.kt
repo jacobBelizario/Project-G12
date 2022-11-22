@@ -7,7 +7,7 @@ import com.example.project_g12.databinding.ActivityOldUserBinding
 
 class OldUserActivity : AppCompatActivity() {
     lateinit var binding:ActivityOldUserBinding
-    var data = DataSource.getInstance().testUser
+    var data = DataSource.getInstance()
     var lessonRemaining = 0
     var lessonCompleted = 0
 
@@ -26,21 +26,22 @@ class OldUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOldUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //set placeholders to username
-        data.lessonList[0].isComplete = true
-        data.lessonList[1].isComplete = true
         checkLessonsRemaining()
-        binding.tvUserNameMain.text = data.userName
-        binding.tvUserNameHeader.text = data.userName
+        binding.tvUserNameMain.text = data.user.userName
+        binding.tvUserNameHeader.text = data.user.userName
         binding.tvLessonCompleted.append(" ${this.lessonCompleted.toString()}")
         binding.tvLessonRemaining.append(" ${this.lessonRemaining.toString()}")
-        var percentage:Double = ((this.lessonCompleted).toDouble()/(data.lessonList.size).toDouble())*100.0
+        var percentage:Double = ((this.lessonCompleted).toDouble()/(data.user.lessonList.size).toDouble())*100.0
         binding.tvCoursePercentage.text = "You have completed ${percentage.toInt()}% of the course"
-
         //button actions
         binding.btnContinue.setOnClickListener {
             var intent = Intent(this,MainMenuActivity::class.java)
             startActivity(intent)
         }
+        binding.btnClearData.setOnClickListener {
+            data.reset()
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
     }
 }
